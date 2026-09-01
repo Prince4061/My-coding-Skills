@@ -8,16 +8,24 @@ A curated collection of specialized, production-ready coding skills and procedur
 
 ```text
 .
-├── .agent/
-│   └── skills/
-│       └── opencv-shape-detection/
-│           ├── SKILL.md                          # Antigravity skill definition & triggers
-│           ├── scripts/
-│           │   └── detect_shapes.py              # Ready-to-use Python shape detection CLI
-│           └── references/
-│               └── manual_classification.md      # Pure OpenCV fallback guide
 ├── skills/
-│   └── opencv-shape-detection/                   # Mirrored skill directory
+│   ├── deep-agent/
+│   │   ├── SKILL.md
+│   │   ├── scripts/
+│   │   └── references/
+│   ├── opencv-shape-detection/
+│   │   ├── SKILL.md                          # Antigravity skill definition & triggers
+│   │   ├── scripts/
+│   │   │   └── detect_shapes.py              # Ready-to-use Python shape detection CLI
+│   │   └── references/
+│   │       └── manual_classification.md      # Pure OpenCV fallback guide
+│   └── opencv-color-detection/
+│       ├── SKILL.md                          # Antigravity color detection skill
+│       ├── scripts/
+│       │   ├── find_color_trackbar.py        # Interactive HSV discovery tool
+│       │   └── color_detection_template.py   # Production color detection & tracking template
+│       └── references/
+│           └── hsv_color_guide.md            # Pure OpenCV HSV guide & lookup tables
 └── README.md
 ```
 
@@ -35,10 +43,26 @@ A curated collection of specialized, production-ready coding skills and procedur
 pip install opencv-python numpy cvzone
 
 # Run on an image
-python .agent/skills/opencv-shape-detection/scripts/detect_shapes.py --image path/to/image.png
+python skills/opencv-shape-detection/scripts/detect_shapes.py --image path/to/image.png
 
 # Run with live webcam feed
-python .agent/skills/opencv-shape-detection/scripts/detect_shapes.py --webcam
+python skills/opencv-shape-detection/scripts/detect_shapes.py --webcam
+```
+
+### 2. `opencv-color-detection`
+- **Purpose**: Real-time color detection, HSV masking, and object tracking with OpenCV and `cvzone`.
+- **Pipeline**: HSV Trackbar Calibration ➔ Value Locking ➔ `ColorFinder` Masking ➔ `findContours` Position Tracking.
+- **Triggers**: Color detection, color tracking, HSV mask, find object by color.
+
+#### Quick Run
+```bash
+pip install opencv-python cvzone
+
+# 1. Discover HSV range with interactive trackbars
+python skills/opencv-color-detection/scripts/find_color_trackbar.py
+
+# 2. Run production color detection & tracking
+python skills/opencv-color-detection/scripts/color_detection_template.py
 ```
 
 ---
