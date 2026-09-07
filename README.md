@@ -13,19 +13,46 @@ A curated collection of specialized, production-ready coding skills and procedur
 │   │   ├── SKILL.md
 │   │   ├── scripts/
 │   │   └── references/
+│   ├── langchain-model-load/
+│   │   ├── SKILL.md                          # LangChain model loading & Hinglish teaching skill
+│   │   ├── scripts/
+│   │   │   ├── gemini_quickstart.py          # Single-turn prompt demo
+│   │   │   ├── gemini_chat_memory.py         # Multi-turn chat loop with list memory
+│   │   │   ├── gemini_streaming_chat.py      # Live streaming typing effect + persona
+│   │   │   └── multi_provider_loader.py      # Gemini / Groq / OpenAI / Ollama loader
+│   │   └── references/
+│   │       ├── patterns.md                   # Canonical code patterns & board points
+│   │       ├── model_providers.md            # Multi-provider reference guide
+│   │       └── teaching_notes_template.md    # Hinglish lesson templates & board points
 │   ├── opencv-shape-detection/
 │   │   ├── SKILL.md                          # Antigravity skill definition & triggers
 │   │   ├── scripts/
 │   │   │   └── detect_shapes.py              # Ready-to-use Python shape detection CLI
 │   │   └── references/
 │   │       └── manual_classification.md      # Pure OpenCV fallback guide
-│   └── opencv-color-detection/
-│       ├── SKILL.md                          # Antigravity color detection skill
+│   ├── opencv-face-detection/
+│   │   ├── SKILL.md                          # Antigravity face detection skill
+│   │   ├── scripts/
+│   │   │   ├── face_detection_live.py        # Live webcam & image face detector CLI
+│   │   │   └── face_blur_and_track.py        # Privacy face blurring & tracking vectors demo
+│   │   └── references/
+│   │       └── blazeface_mediapipe_guide.md  # BlazeFace deep learning architecture & Haar fallback
+│   ├── opencv-color-detection/
+│   │   ├── SKILL.md                          # Antigravity color detection skill
+│   │   ├── scripts/
+│   │   │   ├── find_color_trackbar.py        # Interactive HSV discovery tool
+│   │   │   └── color_detection_template.py   # Production color detection & tracking template
+│   │   └── references/
+│   │       └── hsv_color_guide.md            # Pure OpenCV HSV guide & lookup tables
+│   └── opencv-handtracking/
+│       ├── SKILL.md                          # Hand tracking & Hinglish student teaching skill
 │       ├── scripts/
-│       │   ├── find_color_trackbar.py        # Interactive HSV discovery tool
-│       │   └── color_detection_template.py   # Production color detection & tracking template
+│       │   ├── hand_tracking_basic.py        # 8-step skeleton hand tracking demo
+│       │   ├── finger_counter.py             # Real-time finger counting (0-5)
+│       │   └── finger_distance_gesture.py    # Thumb-index distance & pinch gesture
 │       └── references/
-│           └── hsv_color_guide.md            # Pure OpenCV HSV guide & lookup tables
+│           ├── code-style.md                 # Fixed beginner-friendly code style guide
+│           └── notes-format.md               # Hinglish lesson notes format (Class 8-9)
 └── README.md
 ```
 
@@ -49,7 +76,26 @@ python skills/opencv-shape-detection/scripts/detect_shapes.py --image path/to/im
 python skills/opencv-shape-detection/scripts/detect_shapes.py --webcam
 ```
 
-### 2. `opencv-color-detection`
+### 2. `opencv-face-detection`
+- **Purpose**: Ultra-fast, real-time face detection, confidence scoring, centroid tracking, and privacy blurring with OpenCV and `cvzone` (MediaPipe BlazeFace backend).
+- **Pipeline**: Initialize `FaceDetector` (BlazeFace TFLite) ➔ `findFaces(img)` ➔ Extract Bounding Box `(x, y, w, h)`, Centroid `(cx, cy)` & Confidence Score ➔ Apply Tracking / Blur.
+- **Triggers**: Face detection, face detect karo, cvzone FaceDetector, FaceDetectionModule, blaze_face, live webcam face detection, face bounding box, face blur, face count, face tracking.
+
+#### Quick Run
+```bash
+pip install opencv-python cvzone mediapipe
+
+# 1. Run live webcam face detection with FPS & confidence metrics
+python skills/opencv-face-detection/scripts/face_detection_live.py
+
+# 2. Run face privacy blurring & tracking demo (interactive toggles: B, T, D)
+python skills/opencv-face-detection/scripts/face_blur_and_track.py
+
+# 3. Run on a static image
+python skills/opencv-face-detection/scripts/face_detection_live.py --image path/to/photo.jpg
+```
+
+### 3. `opencv-color-detection`
 - **Purpose**: Real-time color detection, HSV masking, and object tracking with OpenCV and `cvzone`.
 - **Pipeline**: HSV Trackbar Calibration ➔ Value Locking ➔ `ColorFinder` Masking ➔ `findContours` Position Tracking.
 - **Triggers**: Color detection, color tracking, HSV mask, find object by color.
@@ -63,6 +109,47 @@ python skills/opencv-color-detection/scripts/find_color_trackbar.py
 
 # 2. Run production color detection & tracking
 python skills/opencv-color-detection/scripts/color_detection_template.py
+```
+
+### 4. `langchain-model-load`
+- **Purpose**: Beginner-friendly LangChain model loading (Google Gemini, Groq, OpenAI, Ollama), conversational list memory, live streaming, and Hinglish teaching notes with 3-board-point summaries.
+- **Pipeline**: Environment Setup (`.env`) ➔ Direct Model Load (`ChatGoogleGenerativeAI`, `ChatGroq`, etc.) ➔ Clean `llm.invoke()` or `llm.stream()` ➔ Plain List Memory (`HumanMessage`, `AIMessage`).
+- **Triggers**: LangChain model load, Gemini chatbot, model load karne ka code, Hinglish teaching notes, live streaming chatbot, board points.
+
+#### Quick Run
+```bash
+pip install langchain-google-genai langchain-core python-dotenv
+
+# 1. Run single-turn quickstart
+python skills/langchain-model-load/scripts/gemini_quickstart.py
+
+# 2. Run terminal chatbot with memory
+python skills/langchain-model-load/scripts/gemini_chat_memory.py
+
+# 3. Run streaming chat with live typing effect
+python skills/langchain-model-load/scripts/gemini_streaming_chat.py
+
+# 4. Test multi-provider model loader
+python skills/langchain-model-load/scripts/multi_provider_loader.py
+```
+
+### 5. `hand-tracking-cvzone` (`opencv-handtracking`)
+- **Purpose**: Real-time hand tracking, 21 landmark detection, finger counting, gesture distance measurement, and Hinglish lesson notes for school students (Class 8–9).
+- **Pipeline**: Initialize `HandDetector(maxHands=2, detectionCon=0.8)` ➔ `findHands(img)` ➔ Extract 21 `lmList`, `bbox`, `center`, and `type` ➔ Process gestures (`fingersUp()`, `findDistance()`).
+- **Triggers**: Hand tracking, HandDetector, cvzone hands, finger counting, gesture control, virtual mouse, volume control with fingers, hand notes / explanation.
+
+#### Quick Run
+```bash
+pip install opencv-python cvzone mediapipe
+
+# 1. Run basic 8-step hand tracking demo
+python skills/opencv-handtracking/scripts/hand_tracking_basic.py
+
+# 2. Run real-time finger counter (0-5)
+python skills/opencv-handtracking/scripts/finger_counter.py
+
+# 3. Run finger distance & pinch gesture tracker
+python skills/opencv-handtracking/scripts/finger_distance_gesture.py
 ```
 
 ---
