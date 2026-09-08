@@ -1,0 +1,17 @@
+{
+    "name": null,
+    "input_variables": [
+        "document_text",
+        "max_bullets",
+        "target_audience"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "Summarize the following document for an audience of {target_audience}:\n\n{document_text}\n\nKey constraints: Max {max_bullets} bullet points.",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}

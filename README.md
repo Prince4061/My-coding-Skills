@@ -24,6 +24,17 @@ A curated collection of specialized, production-ready coding skills and procedur
 │   │       ├── patterns.md                   # Canonical code patterns & board points
 │   │       ├── model_providers.md            # Multi-provider reference guide
 │   │       └── teaching_notes_template.md    # Hinglish lesson templates & board points
+│   ├── langchain-prompts/
+│   │   ├── SKILL.md                          # LangChain prompt templates & LCEL skill
+│   │   ├── scripts/
+│   │   │   ├── 01_prompt_template_basic.py   # PromptTemplate, variables & JSON escaping
+│   │   │   ├── 02_chat_prompt_history.py     # ChatPromptTemplate & MessagesPlaceholder
+│   │   │   ├── 03_few_shot_prompting.py      # Few-shot chat & text templates
+│   │   │   ├── 04_lcel_chain_runner.py       # LCEL chain (prompt | model | parser)
+│   │   │   └── 05_prompt_serialization.py    # Save/load prompt templates (JSON/YAML)
+│   │   └── references/
+│   │       ├── api-reference.md              # Technical reference & param details
+│   │       └── hinglish-notes.md             # Hinglish explanations & board points
 │   ├── opencv-shape-detection/
 │   │   ├── SKILL.md                          # Antigravity skill definition & triggers
 │   │   ├── scripts/
@@ -150,6 +161,31 @@ python skills/opencv-handtracking/scripts/finger_counter.py
 
 # 3. Run finger distance & pinch gesture tracker
 python skills/opencv-handtracking/scripts/finger_distance_gesture.py
+```
+
+### 6. `langchain-prompt-templates` (`langchain-prompts`)
+- **Purpose**: Composable, reusable LangChain prompt templates (`PromptTemplate`, `ChatPromptTemplate`, `MessagesPlaceholder`, few-shot templates, serialization, LCEL chains).
+- **Pipeline**: Decide Model Type (Text vs Chat) ➔ Add Memory / Placeholders (`MessagesPlaceholder`) ➔ Apply Few-Shot / Partials if needed ➔ Pipe in LCEL (`prompt | model | parser`).
+- **Triggers**: LangChain prompt banao, PromptTemplate, ChatPromptTemplate, MessagesPlaceholder, few-shot, chat_history, LCEL prompt, Hinglish prompt notes.
+
+#### Quick Run
+```bash
+pip install langchain-core langchain-google-genai python-dotenv
+
+# 1. Basic PromptTemplate & partials
+python skills/langchain-prompts/scripts/01_prompt_template_basic.py
+
+# 2. Multi-turn ChatPromptTemplate with chat history
+python skills/langchain-prompts/scripts/02_chat_prompt_history.py
+
+# 3. Few-shot chat & text classification
+python skills/langchain-prompts/scripts/03_few_shot_prompting.py
+
+# 4. End-to-end LCEL chain runner
+python skills/langchain-prompts/scripts/04_lcel_chain_runner.py
+
+# 5. Prompt serialization & loading (JSON/YAML)
+python skills/langchain-prompts/scripts/05_prompt_serialization.py
 ```
 
 ---

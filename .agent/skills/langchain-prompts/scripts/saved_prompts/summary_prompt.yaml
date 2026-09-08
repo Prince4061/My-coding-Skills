@@ -1,0 +1,20 @@
+_type: prompt
+input_variables:
+- document_text
+- max_bullets
+- target_audience
+metadata: null
+name: null
+optional_variables: []
+output_parser: null
+partial_variables: {}
+tags: null
+template: 'Summarize the following document for an audience of {target_audience}:
+
+
+  {document_text}
+
+
+  Key constraints: Max {max_bullets} bullet points.'
+template_format: f-string
+validate_template: false
