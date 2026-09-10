@@ -35,6 +35,18 @@ A curated collection of specialized, production-ready coding skills and procedur
 │   │   └── references/
 │   │       ├── api-reference.md              # Technical reference & param details
 │   │       └── hinglish-notes.md             # Hinglish explanations & board points
+│   ├── langchain-structuredoutput/
+│   │   ├── SKILL.md                          # LangChain structured output & Devesh's style
+│   │   ├── scripts/
+│   │   │   ├── 01_pydantic_structured_output.py    # Pydantic BaseModel validation demo
+│   │   │   ├── 02_typeddict_structured_output.py   # Lightweight TypedDict demo
+│   │   │   ├── 03_json_schema_structured_output.py # Pure JSON Schema dict demo
+│   │   │   ├── 04_nested_models_and_lists.py       # Nested Pydantic models (Resume parser)
+│   │   │   └── 05_include_raw_and_error_handling.py# include_raw=True & error handling
+│   │   └── references/
+│   │       ├── api-reference.md              # Technical API & config reference
+│   │       ├── devesh-coding-style.md        # Complete Devesh Teaching Code Style guide
+│   │       └── hinglish-notes.md             # Why -> What -> How -> Code classroom notes
 │   ├── opencv-shape-detection/
 │   │   ├── SKILL.md                          # Antigravity skill definition & triggers
 │   │   ├── scripts/
@@ -214,6 +226,31 @@ python skills/opencv-bodydetection/scripts/02_exercise_rep_counter.py
 
 # 3. Run posture lean & centroid tracker
 python skills/opencv-bodydetection/scripts/03_posture_and_center_tracker.py
+```
+
+### 8. `langchain-structured-output` (`langchain-structuredoutput`)
+- **Purpose**: Extract structured, validated data from LLMs using LangChain's `with_structured_output()` (Pydantic BaseModel, TypedDict, JSON Schema) strictly following Devesh's "Why → What → How → Code" pedagogical pattern with Hinglish comments and `# 🔥 Yaad Rakho` summary blocks.
+- **Pipeline**: Problem Statement (Why) ➔ One-Line Concept (What) ➔ Analogy & Flow Diagram (How) ➔ `with_structured_output()` Code ➔ Summary (Yaad Rakho).
+- **Triggers**: Structured output, Pydantic LangChain, TypedDict schema, JSON schema extraction, with_structured_output, teaching notes, Devesh's coding style, class mein explain karna.
+
+#### Quick Run
+```bash
+pip install langchain-core langchain-google-genai pydantic python-dotenv
+
+# 1. Pydantic BaseModel structured output & validation
+python skills/langchain-structuredoutput/scripts/01_pydantic_structured_output.py
+
+# 2. TypedDict lightweight dictionary extraction
+python skills/langchain-structuredoutput/scripts/02_typeddict_structured_output.py
+
+# 3. Pure JSON Schema extraction
+python skills/langchain-structuredoutput/scripts/03_json_schema_structured_output.py
+
+# 4. Nested models & lists (Resume Parser)
+python skills/langchain-structuredoutput/scripts/04_nested_models_and_lists.py
+
+# 5. Production debugging with include_raw=True & error catching
+python skills/langchain-structuredoutput/scripts/05_include_raw_and_error_handling.py
 ```
 
 ---
