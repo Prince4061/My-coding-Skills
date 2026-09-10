@@ -55,6 +55,15 @@ A curated collection of specialized, production-ready coding skills and procedur
 │   │   │   └── color_detection_template.py   # Production color detection & tracking template
 │   │   └── references/
 │   │       └── hsv_color_guide.md            # Pure OpenCV HSV guide & lookup tables
+│   ├── opencv-bodydetection/
+│   │   ├── SKILL.md                          # Body detection & 33 pose landmarks skill
+│   │   ├── scripts/
+│   │   │   ├── 01_body_detection_basic.py    # 6-step webcam body detection demo
+│   │   │   ├── 02_exercise_rep_counter.py    # Workout rep counter (Curls & Squats)
+│   │   │   └── 03_posture_and_center_tracker.py # Posture lean & centroid tracker
+│   │   └── references/
+│   │       ├── 33_landmarks_reference.md     # MediaPipe 33 landmark anatomical guide
+│   │       └── hinglish_teaching_notes.md    # Hinglish lesson notes & classroom guide
 │   └── opencv-handtracking/
 │       ├── SKILL.md                          # Hand tracking & Hinglish student teaching skill
 │       ├── scripts/
@@ -186,6 +195,25 @@ python skills/langchain-prompts/scripts/04_lcel_chain_runner.py
 
 # 5. Prompt serialization & loading (JSON/YAML)
 python skills/langchain-prompts/scripts/05_prompt_serialization.py
+```
+
+### 7. `opencv-bodydetection` (`opencv-body-detection`)
+- **Purpose**: Real-time human body & pose detection, 33 skeletal joint landmark tracking, exercise workout rep counting (curls, squats), posture slouch & lean analysis, and beginner-friendly Hinglish lesson notes for students using OpenCV and `cvzone.PoseModule`.
+- **Pipeline**: Initialize `PoseDetector()` ➔ `findPose(img)` ➔ `findPosition(img)` ➔ Extract 33 `lmList` coords & `bboxInfo` (center & bbox) ➔ Angle / Fitness logic (`detector.findAngle`).
+- **Triggers**: Body detection, pose detection, cvzone PoseDetector, PoseModule, 33 landmarks, body posture, skeleton tracking, fitness tracking pushups squats, body joints, pose estimation.
+
+#### Quick Run
+```bash
+pip install opencv-python cvzone mediapipe
+
+# 1. Run basic 6-step webcam body detection
+python skills/opencv-bodydetection/scripts/01_body_detection_basic.py
+
+# 2. Run workout rep counter (Bicep curls & Squats)
+python skills/opencv-bodydetection/scripts/02_exercise_rep_counter.py
+
+# 3. Run posture lean & centroid tracker
+python skills/opencv-bodydetection/scripts/03_posture_and_center_tracker.py
 ```
 
 ---
